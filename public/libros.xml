@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo>
+    <libro id="1">
+        <titulo>Introducción a la Programación</titulo>
+        <autor>John Doe</autor>
+        <genero>Informática</genero>
+        <año_publicacion>2020</año_publicacion>
+        <precio>25.00</precio>
+    </libro>
+    <libro id="2">
+        <titulo>Aprende PHP</titulo>
+        <autor>Jane Smith</autor>
+        <genero>Programación</genero>
+        <año_publicacion>2019</año_publicacion>
+        <precio>30.00</precio>
+    </libro>
+    <libro id="3">
+        <titulo>JavaScript Avanzado</titulo>
+        <autor>Mary Johnson</autor>
+        <genero>Programación</genero>
+        <año_publicacion>2018</año_publicacion>
+        <precio>20.00</precio>
+    </libro>
+</catalogo>

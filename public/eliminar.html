@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Libro</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header style="background-color: #4A90E2;" class="text-white text-center py-3">
+        <h1>Eliminar Libro</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="agregar.html">Agregar Libro</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="actualizar.html">Actualizar Libro</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        <form id="eliminar-libro-form">
+            <div class="form-group">
+                <label for="id">ID del libro</label>
+                <input type="number" class="form-control" id="id" name="id" placeholder="ID del libro" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Eliminar Libro</button>
+        </form>
+    </main>
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2024 Biblioteca Virtual. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        document.getElementById('eliminar-libro-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch('/graphql', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    query: `
+                        mutation {
+                            eliminarLibro(id: ${formData.get('id')})
+                        }
+                    `
+                })
+            });
+            const result = await response.json();
+            console.log(result);
+            alert('Libro eliminado exitosamente');
+            e.target.reset(); // Resetear el formulario
+        });
+    </script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
